@@ -1,11 +1,13 @@
 library(quantmod)
 library(dygraphs)
+library(DT)
 
 shinyServer(function(input, output) {
   
   dataInput <- reactive({
     
-    prices <- getSymbols(input$symb, auto.assign = FALSE)
+    prices <- getOptionChain(input$symb, auto.assign = FALSE)
+    prices <- prices$calls
     
   })
   
@@ -21,11 +23,10 @@ shinyServer(function(input, output) {
   
   
   ### uncomment this to see an interactive plot via dygraphs
-  output$plot <- renderDygraph({
+  output$plot <- DT::renderDataTable({
     
     prices <- dataInput()
+datatable(prices)
     
-    dygraph(Ad(prices)) %>%
-      dyRangeSelector()
   })
 })

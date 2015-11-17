@@ -15,6 +15,6 @@ shinyUI(fluidPage(
     ## mainPanel(plotOutput("plot"))
     
     ### uncomment for dygraphs chart
-    mainPanel(dygraphOutput("plot"))
+    mainPanel(DT::dataTableOutput("plot"))
   )
 ))
