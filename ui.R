@@ -2,11 +2,11 @@ library(shiny)
 library(dygraphs)
 
 shinyUI(fluidPage(
-  titlePanel("Simple Stock Charting App"),
+  titlePanel("Stock Option Chain"),
   
   sidebarLayout(
     sidebarPanel(
-      helpText("Input a ticker and see the stock's chart."),
+      helpText("Input a ticker and see the Call Option prices."),
       
       textInput("symb", label = h3("Input a Valid Stock Ticker"), value = "GE") 
     ),
